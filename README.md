@@ -54,4 +54,4 @@ It contains only:
 - A standalone VR player HTML file
 
 ## AI usage
-For the sake of transparency I wish to inform that a vast majority of the code was created with the help of LLMs. I have done my utmost to test everything before uploading the repository. I employed these tools as a way for me to create a VR player for myself, as I am but a simple gooner and not a developer.
+For the sake of transparency I wish to inform that a vast majority of the code was created with the help of LLMs. I have done my utmost to test everything before uploading the repository. I initially employed these tools as a way for me to create a VR player for myself, as I am but a simple gooner and not a developer. I thought I am probably not the only one who'd have a usecase for an easy VR player in Szurubooru, which is why I am uploading it for the three other people who'd use it.

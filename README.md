@@ -5,7 +5,7 @@ A new web server (powered by Nginx) gets created within the Szurubooru docker st
 
 Whenever you tag a post in Szurubooru with 'vr' (or whichever tag you define) a new button appears that leads you to the VR player.
 
-## Requirement
+## Requirements
 You need to install [Szurubooru](https://github.com/rr-/szurubooru). Please follow the installation instructions. Make sure you build the client image. Everything is detailed on the Szurubooru GitHub page.
 
 Existing Szurubooru instances also work. You only need to modify your _docker-compose.yaml_ file and build the images. I do not supply a full _docker-compose.yaml_ file, only the part that is necessary for the VR player.

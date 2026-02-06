@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>VR Player</title>
+<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-stereo-component@3.0.0/dist/aframe-stereo-component.min.js"></script>
+<style>
+html,body { height:100%; margin:0; background:#000; }
+#overlay {
+position: absolute; left:0; right:0; top:0; bottom:0;
+display:flex; align-items:center; justify-content:center;
+flex-direction: column;
+z-index:10; pointer-events:auto;
+}
+#playbtn {
+background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+color: #fff; font-size: 18px; padding: 12px 18px; border-radius: 8px;
+margin-bottom: 10px;
+}
+#seekbar {
+position: absolute;
+bottom: 10px;
+left: 5%;
+width: 90%;
+z-index: 11;
+}
+.a-enter-vr-button, .a-enter-ar-button {
+bottom: 20px !important;
+}
+</style>
+</head>
+<body>
+<div id="overlay">
+  <button id="playbtn">Tap to play in VR</button>
+</div>
+
+<input type="range" id="seekbar" min="0" max="100" value="0">
+
+<a-scene vr-mode-ui device-orientation-permission-ui background="color: #000">
+<a-assets>
+<video id="vid" autoplay loop playsinline webkit-playsinline crossorigin="anonymous" muted></video>
+</a-assets>
+
+<a-videosphere id="vs" src="#vid" rotation="0 -90 0"></a-videosphere>
+<a-entity camera look-controls>
+<!-- Cursor removed -->
+</a-entity>
+</a-scene>
+
+<script>
+(function(){
+const params = new URLSearchParams(location.search);
+const src = params.get('src') || '';
+const stereo = (params.get('stereo') || 'left-right').toLowerCase();
+const vid = document.getElementById('vid');
+const vs = document.getElementById('vs');
+const overlay = document.getElementById('overlay');
+const btn = document.getElementById('playbtn');
+const seekbar = document.getElementById('seekbar');
+
+if (!src) {
+btn.textContent = 'Missing video src param';
+}
+
+// set video source and initial mute
+vid.src = src;
+vid.muted = true;
+
+// set stereo mode
+if (stereo === 'top-bottom' || stereo === 'tb') {
+vs.setAttribute('stereo','top-bottom');
+} else {
+vs.setAttribute('stereo','left-right');
+}
+
+// overlay play button
+btn.addEventListener('click', async function(){
+try {
+vid.muted = false; // unmute on first tap
+await vid.play();
+} catch (e) {
+console.warn('play() failed:', e);
+}
+// hide overlay completely
+overlay.style.display = 'none';
+
+// request device orientation permission if needed
+if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+DeviceMotionEvent.requestPermission().catch(()=>{});
+}
+});
+
+// hide overlay automatically if autoplay works
+vid.addEventListener('playing', ()=> overlay.style.display = 'none');
+
+// update slider as video plays
+vid.addEventListener('timeupdate', () => {
+  if (!vid.duration) return;
+  seekbar.value = (vid.currentTime / vid.duration) * 100;
+});
+
+// seek video when slider changes
+seekbar.addEventListener('input', () => {
+  if (!vid.duration) return;
+  vid.currentTime = (seekbar.value / 100) * vid.duration;
+});
+})();
+</script>
+</body>
+</html>

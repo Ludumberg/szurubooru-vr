@@ -21,6 +21,8 @@ Copy the vrplayer directory in your Szurubooru root directory (where the client 
 ```
 .
 ├── client
+│   ├── html
+│   │   ├── post_readonly_sidebar.tpl
 ├── server
 ├── vrplayer
 │   ├── nginx.conf

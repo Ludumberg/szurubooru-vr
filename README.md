@@ -8,7 +8,7 @@ Whenever you tag a post in Szurubooru with 'vr' (or whichever tag you define) a 
 ## Requirement
 You need to install [Szurubooru](https://github.com/rr-/szurubooru). Please follow the installation instructions. Make sure you build the client image. Everything is detailed on the Szurubooru GitHub page.
 
-Existing Szurubooru instances also work. You only need to modify you _docker-compose.yaml_ file and build the images. I do not supply a full _docker-compose.yaml_ file, only the part that is necessary for the VR player.
+Existing Szurubooru instances also work. You only need to modify your _docker-compose.yaml_ file and build the images. I do not supply a full _docker-compose.yaml_ file, only the part that is necessary for the VR player.
 
 HTTPS is required for the VR player to work. This means you have an SSL certificate (either self signed or from ex. Let's Encrypt). Since the VR player is being served by Nginx you can modify the nginx.conf file to listen to HTTPS. However I recommend using a seperate reverse proxy (as Szurubooru also recommends).
 

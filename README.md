@@ -49,7 +49,7 @@ If everything is done correctly you should see a 'Play in VR' button on the post
 This repository does NOT include Szurubooru.
 
 It contains only:
-- A modified template file
+- A modified template file copied directly from the Szurubooru GitHub page
 - Nginx configuration file
 - A standalone VR player HTML file
 

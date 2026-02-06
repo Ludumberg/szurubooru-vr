@@ -61,6 +61,7 @@
             <a href='https://www.google.com/searchbyimage?&image_url=<%- encodeURIComponent(ctx.post.fullContentUrl) %>'>Google Images</a>
         </section>
 
+        <!-- Start of modifications. This part has been added. -->
         <!-- Display button if tag is identified. Change tagObj._names.indexOf('vr') to something else if not using tag vr. -->
         <%
         var showVRButton = false;
@@ -87,6 +88,7 @@
                 </button>
             </section>
         <% } %>
+        <!-- End of modifications. -->
 
         <section class='social'>
             <div class='score-container'></div>

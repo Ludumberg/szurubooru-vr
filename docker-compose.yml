@@ -4,7 +4,7 @@ services:
     image: nginx:alpine
     container_name: szurubooru-vr
     ports:
-      - "8080:80" # change if needed
+      - "8081:80" # change if needed
     volumes:
       - ./vrviewer:/usr/share/nginx/html:ro
       - ./vrviewer/nginx.conf:/etc/nginx/conf.d/default.conf:ro

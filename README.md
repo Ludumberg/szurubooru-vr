@@ -1,5 +1,5 @@
 # Szurubooru VR
-This repository has everything necessary to add a VR player to your Szurubooru instance. Any device/browser that supports WebXR (pretty much every standalone VR headset and smartphone) is compatible.
+This repository has everything necessary to add a VR player to your Szurubooru instance. Any device/browser that supports WebXR (pretty much every standalone VR headset and smartphone) is compatible. With this you can watch SBS VR videos/images on any device.
 
 A new web server (powered by Nginx) gets created within the Szurubooru docker stack which hosts the VR player (powered by A-Frame). This new web site grabs the file path and streams it in the VR player, without download or upload.
 

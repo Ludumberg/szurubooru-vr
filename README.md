@@ -45,6 +45,8 @@ This is the URL to your VR player. Change the domain to the one you are using. T
 After all the files have been copied you can now build the client image with `docker compose build client` and spin up your Szurubooru instance with `docker compose up -d`
 
 If everything is done correctly you should see a 'Play in VR' button on the posts that have the 'vr' tag. Pressing the button should lead you to your VR player from which you can start watching the video in VR. If you are modifying an existing Szurubooru instance then clear your cache as sometimes the button won't appear even if everything is done correctly.
+# Troubleshooting
+In my experience the most common issue, why it wouldn't work is because the VR player, in this case Nginx, couldn't get the file from Szurubooru. This is always a network issue. I recommend checking the container logs for Nginx. During my tests I would get 404s because the containers couldn't contact each other.
 # Disclaimer
 This repository does NOT include Szurubooru.
 
